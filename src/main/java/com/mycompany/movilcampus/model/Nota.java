@@ -30,8 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Nota.findAll", query = "SELECT n FROM Nota n"),
-    @NamedQuery(name = "Nota.findNota", query = "SELECT n FROM Nota n WHERE n.idmateria.idmateria = :idmateria"
-            + "  AND  n.idmatricula.idmatricula = :idmatricula"),
+    @NamedQuery(name = "Nota.findNota", query = "SELECT n FROM Nota n WHERE n.materia.idmateria = :idmateria"
+            + "  AND  n.matricula.idmatricula = :idmatricula"),
     @NamedQuery(name = "Nota.findByIdnota", query = "SELECT n FROM Nota n WHERE n.idnota = :idnota"),
     @NamedQuery(name = "Nota.findByPimerp", query = "SELECT n FROM Nota n WHERE n.primerp = :primerp"),
     @NamedQuery(name = "Nota.findBySegundop", query = "SELECT n FROM Nota n WHERE n.segundop = :segundop"),
