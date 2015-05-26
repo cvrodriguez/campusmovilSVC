@@ -28,11 +28,11 @@ public class NotaSvc {
 
     @GET
     @Path("/{idmateria}/{idmatricula}")
-    public JsonObject verNotas(@PathParam("idmateria") int idmateria, @PathParam("idmatricula") int idmatricula) {
+    public JsonObject verNotas(@PathParam("idmateria") int materia, @PathParam("idmatricula") int idmatricula) {
 
         Nota nota1 = em.createNamedQuery("Nota.findNota", Nota.class)
                 .setParameter("idmatricula", idmatricula)
-                .setParameter("idmateria", idmateria)
+                .setParameter("idmateria", materia)
                 .getSingleResult();
 
         return Json.createObjectBuilder()
@@ -42,6 +42,7 @@ public class NotaSvc {
                 .add("tercerp", nota1.getTercerp())
                 .add("notasvarias", nota1.getNotasvarias())
                 .add("notaproyecto", nota1.getNotaproyecto())
+                .add("matricula", nota1.getMatricula().getIdmatricula())
                                         .build();
 
         

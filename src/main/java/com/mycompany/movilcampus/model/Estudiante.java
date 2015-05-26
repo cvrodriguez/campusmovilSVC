@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Estudiante.findByNombre", query = "SELECT e FROM Estudiante e WHERE e.nombre = :nombre"),
     @NamedQuery(name = "Estudiante.findByApellido", query = "SELECT e FROM Estudiante e WHERE e.apellido = :apellido"),
     @NamedQuery(name = "Estudiante.findByCorreo", query = "SELECT e FROM Estudiante e WHERE e.correo = :correo"),
-    @NamedQuery(name = "Estudiante.findByIdentidicacion", query = "SELECT e FROM Estudiante e WHERE e.identidicacion = :identidicacion")})
+    @NamedQuery(name = "Estudiante.findByIdentificacion", query = "SELECT e FROM Estudiante e WHERE e.identificacion = :identificacion AND e.clave = :clave")})
 public class Estudiante implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -63,8 +63,14 @@ public class Estudiante implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "identidicacion")
-    private String identidicacion;
+    @Column(name = "identificacion")
+    private String identificacion;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
+    @Column(name = "clave")
+    private String clave;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idestudiante")
     private List<Matricula> matriculaList;
 
@@ -75,12 +81,13 @@ public class Estudiante implements Serializable {
         this.idestudiante = idestudiante;
     }
 
-    public Estudiante(Integer idestudiante, String nombre, String apellido, String correo, String identidicacion) {
+    public Estudiante(Integer idestudiante, String nombre, String apellido, String correo, String identificacion, String clave) {
         this.idestudiante = idestudiante;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
-        this.identidicacion = identidicacion;
+        this.identificacion = identificacion;
+        this.clave = clave;
     }
 
     public Integer getIdestudiante() {
@@ -115,13 +122,23 @@ public class Estudiante implements Serializable {
         this.correo = correo;
     }
 
-    public String getIdentidicacion() {
-        return identidicacion;
+    public String getIdentificacion() {
+        return identificacion;
     }
 
-    public void setIdentidicacion(String identidicacion) {
-        this.identidicacion = identidicacion;
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
     }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    
 
     @XmlTransient
     public List<Matricula> getMatriculaList() {
