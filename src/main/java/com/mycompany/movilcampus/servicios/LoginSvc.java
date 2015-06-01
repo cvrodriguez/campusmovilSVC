@@ -6,6 +6,7 @@
 package com.mycompany.movilcampus.servicios;
 
 import com.mycompany.movilcampus.model.Estudiante;
+import com.mycompany.movilcampus.model.Matricula;
 import javax.ejb.Stateless;
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -37,9 +38,13 @@ public class LoginSvc {
                     .setParameter("identificacion", identificacion)
                     .setParameter("clave", clave)
                     .getSingleResult();
-
+            
             return Json.createObjectBuilder()
+                    .add("idestudiante", estudiante.getIdestudiante())
                     .add("identificacion", estudiante.getIdentificacion())
+                    .add("nombre", estudiante.getNombre())
+                    .add("apellido", estudiante.getApellido())
+                    .add("programa", "Ingenieria en sistemas")
                     .add("ingresar", true)
                     .add("mensaje","Bienvenido")
                     .build();

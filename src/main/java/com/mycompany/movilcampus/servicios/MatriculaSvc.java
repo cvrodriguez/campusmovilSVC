@@ -6,9 +6,13 @@
 
 package com.mycompany.movilcampus.servicios;
 
+import com.mycompany.movilcampus.model.Materia;
 import com.mycompany.movilcampus.model.Matricula;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -45,6 +49,5 @@ public class MatriculaSvc {
                 .add("periodo", matricula.getPeriodo())
                 .build();
     }
-    
     
 }

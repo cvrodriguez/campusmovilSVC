@@ -30,8 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Nota.findAll", query = "SELECT n FROM Nota n"),
-    @NamedQuery(name = "Nota.findNota", query = "SELECT n FROM Nota n WHERE n.materia.idmateria = :idmateria"
-            + "  AND  n.matricula.idmatricula = :idmatricula"),
+    @NamedQuery(name = "Nota.findNota", query = "SELECT n FROM Nota n WHERE n.materia.idmateria = :idmateria  AND  n.matricula.idestudiante.idestudiante = :idestudiante and n.matricula.estado = true"),
     @NamedQuery(name = "Nota.findByIdnota", query = "SELECT n FROM Nota n WHERE n.idnota = :idnota"),
     @NamedQuery(name = "Nota.findByPimerp", query = "SELECT n FROM Nota n WHERE n.primerp = :primerp"),
     @NamedQuery(name = "Nota.findBySegundop", query = "SELECT n FROM Nota n WHERE n.segundop = :segundop"),
@@ -48,23 +47,23 @@ public class Nota implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "primerp")
-    private long primerp;
+    private Double primerp;
     @Basic(optional = false)
     @NotNull
     @Column(name = "segundop")
-    private long segundop;
+    private Double segundop;
     @Basic(optional = false)
     @NotNull
     @Column(name = "tercerp")
-    private long tercerp;
+    private Double tercerp;
     @Basic(optional = false)
     @NotNull
     @Column(name = "notasvarias")
-    private long notasvarias;
+    private Double notasvarias;
     @Basic(optional = false)
     @NotNull
     @Column(name = "notaproyecto")
-    private long notaproyecto;
+    private Double notaproyecto;
     @JoinColumn(name = "matricula", referencedColumnName = "idmatricula")
     @ManyToOne(optional = false)
     private Matricula matricula;
@@ -79,7 +78,7 @@ public class Nota implements Serializable {
         this.idnota = idnota;
     }
 
-    public Nota(Integer idnota, long primerp, long segundop, long tercerp, long notasvarias, long notaproyecto) {
+    public Nota(Integer idnota, Double primerp, Double segundop, Double tercerp, Double notasvarias, Double notaproyecto) {
         this.idnota = idnota;
         this.primerp = primerp;
         this.segundop = segundop;
@@ -96,43 +95,43 @@ public class Nota implements Serializable {
         this.idnota = idnota;
     }
 
-    public long getPrimerp() {
+    public Double getPrimerp() {
         return primerp;
     }
 
-    public void setPrimerp(long primerp) {
+    public void setPrimerp(Double primerp) {
         this.primerp = primerp;
     }
 
-    public long getSegundop() {
+    public Double getSegundop() {
         return segundop;
     }
 
-    public void setSegundop(long segundop) {
+    public void setSegundop(Double segundop) {
         this.segundop = segundop;
     }
 
-    public long getTercerp() {
+    public Double getTercerp() {
         return tercerp;
     }
 
-    public void setTercerp(long tercerp) {
+    public void setTercerp(Double tercerp) {
         this.tercerp = tercerp;
     }
 
-    public long getNotasvarias() {
+    public Double getNotasvarias() {
         return notasvarias;
     }
 
-    public void setNotasvarias(long notasvarias) {
+    public void setNotasvarias(Double notasvarias) {
         this.notasvarias = notasvarias;
     }
 
-    public long getNotaproyecto() {
+    public Double getNotaproyecto() {
         return notaproyecto;
     }
 
-    public void setNotaproyecto(long notaproyecto) {
+    public void setNotaproyecto(Double notaproyecto) {
         this.notaproyecto = notaproyecto;
     }
 

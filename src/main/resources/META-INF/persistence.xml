@@ -3,6 +3,9 @@
   <persistence-unit name="com.mycompany_movilCampus_war_1.0-SNAPSHOTPU" transaction-type="JTA">
     <jta-data-source>dbmovil</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties/>
+    <properties>
+        <property name="eclipselink.logging.level" value="FINE" />
+        <property name="eclipselink.cache.shared.default" value="false"/>
+    </properties>
   </persistence-unit>
 </persistence>

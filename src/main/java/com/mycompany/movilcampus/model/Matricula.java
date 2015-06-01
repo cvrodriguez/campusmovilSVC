@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Matricula.findAll", query = "SELECT m FROM Matricula m"),
-    @NamedQuery(name = "Matricula.findByIdestudiante", query = "SELECT m FROM Matricula m WHERE m.idestudiante.idestudiante = :idestudiante"),
+    @NamedQuery(name = "Matricula.findByIdestudiante", query = "SELECT m FROM Matricula m WHERE m.idestudiante.idestudiante = :idestudiante AND m.estado = false"),
     @NamedQuery(name = "Matricula.findByIdmatricula", query = "SELECT m FROM Matricula m WHERE m.idmatricula = :idmatricula"),
     @NamedQuery(name = "Matricula.findByEstado", query = "SELECT m FROM Matricula m WHERE m.estado = :estado"),
     @NamedQuery(name = "Matricula.findByAno", query = "SELECT m FROM Matricula m WHERE m.ano = :ano"),
@@ -44,7 +44,7 @@ public class Matricula implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "idmatricula")
-    private Integer idmatricula;
+    private Long idmatricula;
     @Basic(optional = false)
     @NotNull
     @Column(name = "estado")
@@ -70,22 +70,22 @@ public class Matricula implements Serializable {
     public Matricula() {
     }
 
-    public Matricula(Integer idmatricula) {
+    public Matricula(Long idmatricula) {
         this.idmatricula = idmatricula;
     }
 
-    public Matricula(Integer idmatricula, boolean estado, String ano, int periodo) {
+    public Matricula(Long idmatricula, boolean estado, String ano, int periodo) {
         this.idmatricula = idmatricula;
         this.estado = estado;
         this.ano = ano;
         this.periodo = periodo;
     }
 
-    public Integer getIdmatricula() {
+    public Long getIdmatricula() {
         return idmatricula;
     }
 
-    public void setIdmatricula(Integer idmatricula) {
+    public void setIdmatricula(Long idmatricula) {
         this.idmatricula = idmatricula;
     }
 
