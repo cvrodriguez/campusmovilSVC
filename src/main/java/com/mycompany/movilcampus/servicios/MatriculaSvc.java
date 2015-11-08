@@ -43,7 +43,7 @@ public class MatriculaSvc {
         return Json.createObjectBuilder()
               .add("idMatricula",matricula.getIdmatricula())
                 .add("idestudiante", idestudiante)
-                .add("idsemestre", matricula.getIdsemestre().getIdsemestre())
+                .add("idsemestre", 0)
                 .add("estado", matricula.getEstado())
                 .add("ano", matricula.getAno())
                 .add("periodo", matricula.getPeriodo())

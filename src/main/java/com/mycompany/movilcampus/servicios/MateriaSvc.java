@@ -53,6 +53,7 @@ public class MateriaSvc {
         return Json.createObjectBuilder()
                 .add("idmateria", materia.getIdmateria())
                 .add("nombre", materia.getNombre())
-                .add("nota", definitiva);
+                .add("nota", definitiva)
+                .add("idsemestre",materia.getIdsemestre());
     }
 }

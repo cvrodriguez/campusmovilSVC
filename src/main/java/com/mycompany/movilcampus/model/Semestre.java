@@ -45,8 +45,6 @@ public class Semestre implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsemestre")
-    private List<Matricula> matriculaList;
 
     public Semestre() {
     }
@@ -74,15 +72,6 @@ public class Semestre implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    @XmlTransient
-    public List<Matricula> getMatriculaList() {
-        return matriculaList;
-    }
-
-    public void setMatriculaList(List<Matricula> matriculaList) {
-        this.matriculaList = matriculaList;
     }
 
     @Override

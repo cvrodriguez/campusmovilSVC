@@ -60,9 +60,9 @@ public class Matricula implements Serializable {
     private int periodo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "matricula")
     private List<Nota> notaList;
-    @JoinColumn(name = "idsemestre", referencedColumnName = "idsemestre")
-    @ManyToOne(optional = false)
-    private Semestre idsemestre;
+//    @JoinColumn(name = "idsemestre", referencedColumnName = "idsemestre")
+//    @ManyToOne(optional = false)
+//    private Semestre idsemestre;
     @JoinColumn(name = "idestudiante", referencedColumnName = "idestudiante")
     @ManyToOne(optional = false)
     private Estudiante idestudiante;
@@ -122,13 +122,13 @@ public class Matricula implements Serializable {
         this.notaList = notaList;
     }
 
-    public Semestre getIdsemestre() {
-        return idsemestre;
-    }
-
-    public void setIdsemestre(Semestre idsemestre) {
-        this.idsemestre = idsemestre;
-    }
+//    public Semestre getIdsemestre() {
+//        return idsemestre;
+//    }
+//
+//    public void setIdsemestre(Semestre idsemestre) {
+//        this.idsemestre = idsemestre;
+//    }
 
     public Estudiante getIdestudiante() {
         return idestudiante;

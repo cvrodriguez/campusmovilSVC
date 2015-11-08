@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.movilcampus.model;
 
 import java.io.Serializable;
@@ -37,8 +36,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Materia.findAll", query = "SELECT m FROM Materia m"),
     @NamedQuery(name = "Materia.findByIdestudiante", query = "SELECT m FROM Materia m JOIN m.notaList n JOIN n.matricula mat WHERE mat.idestudiante.idestudiante = :idestudiante AND mat.estado = true"),
     @NamedQuery(name = "Materia.findByIdmateria", query = "SELECT m FROM Materia m WHERE m.idmateria = :idmateria"),
+    @NamedQuery(name = "Materia.findBySemestre", query = "SELECT m FROM Materia m WHERE m.idsemestre = :idsemestre"),
     @NamedQuery(name = "Materia.findByNombre", query = "SELECT m FROM Materia m WHERE m.nombre = :nombre")})
+
 public class Materia implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,6 +57,10 @@ public class Materia implements Serializable {
     @JoinColumn(name = "programa", referencedColumnName = "idprograma")
     @ManyToOne(optional = false)
     private Programa programa;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "idsemestre")
+    private Integer idsemestre;
 
     public Materia() {
     }
@@ -74,6 +80,14 @@ public class Materia implements Serializable {
 
     public void setIdmateria(Integer idmateria) {
         this.idmateria = idmateria;
+    }
+
+    public Integer getIdsemestre() {
+        return idsemestre;
+    }
+
+    public void setIdsemestre(Integer idsemestre) {
+        this.idsemestre = idsemestre;
     }
 
     public String getNombre() {
@@ -125,5 +139,5 @@ public class Materia implements Serializable {
     public String toString() {
         return "com.mycompany.movilcampus.Materia[ idmateria=" + idmateria + " ]";
     }
-    
+
 }
